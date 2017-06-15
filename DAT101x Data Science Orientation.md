@@ -5,6 +5,7 @@ What can data tell: descriptive, associative, comparative, predictive
 What Excel can bring us simple visualization: Conditional Formatting -> Color Scales; Insert -> Line; PivotTable & PivotChart
 
 <hr/>
+
 ### Module 3: Basic Statistics
 
 * standard error (SE) = sample standard variance / sqrt(sample size)
