@@ -6,8 +6,10 @@ What Excel can bring us simple visualization: Conditional Formatting -> Color Sc
 
 <hr/>
 ### Module 3: Basic Statistics
+
 * standard error (SE) = sample standard variance / sqrt(sample size)
 * Hypothesis Testing: <br/>
+
   **T-test** (df=n-1) 
   
   ![T-test](https://wikimedia.org/api/rest_v1/media/math/render/svg/1063f91f450e9fd0094a38f1856eb11bd201d232)<br/>
@@ -55,6 +57,7 @@ The outcome of this analysis is a **f-statistic**. Unlike the t-statistic distri
 ![ALT TEXT](http://www.statisticshowto.com/wp-content/uploads/2013/09/f-table.jpg)
 
 <hr/>
+
 Check out [THIS LINK](https://github.com/MicrosoftLearning/Data-Science-Orientation/raw/master/Data%20Science%20101%20Statistics%20Overview.pdf) for more insights of statistics.
 
 Some distribution [Tables](http://documents.software.dell.com/Statistics/Textbook/Distribution-Tables).
