@@ -60,9 +60,9 @@ STR
 #### Nulls
 
 ```sql
-ISNULL(col/var, value) //return value is col or var is null
-NULLIF(col/var, value) //return null if col or var is value
-COALESCE(col1/var1, col2/var2 ...) //return the 1st non-null col/var in the list
+ISNULL(col/var, value) # return value if col or var is null
+NULLIF(col/var, value) # return null if col or var is value
+COALESCE(col1/var1, col2/var2 ...) # return the 1st non-null col/var in the list
 ```
 
 #### Distinct, Top and Offset
@@ -75,23 +75,23 @@ SELECT IsNull(try_cast(Size As Integer),0) As NumericSize FROM SalesLT.Product
 SELECT ProductNumber, NULLIF(Color,'Multi') + ',' + IsNull(Size, '') As ProductDetails FROM SalesLT.Product
 
 SELECT Name, 
-  Case
-    When SellEndDate IS NULL THEN 'on sale'
+  CASE
+    WHEN SellEndDate IS NULL THEN 'on sale'
     ELSE 'Discontinued'
     END AS SalesStatus
 FROM SalesLT.Product
       
-SELECT DISTINCT ISNULL(Color, 'NONE') AS COLOR, ISNULL(Size, '-') AS SIZE<br>
-FROM SalesLT.Product<br>
-ORDER BY COLOR DESC<br>
+SELECT DISTINCT ISNULL(Color, 'NONE') AS COLOR, ISNULL(Size, '-') AS SIZE
+FROM SalesLT.Product
+ORDER BY COLOR DESC
   
 SELECT TOP 10 Name, ListPrice FROM SalesLT.Product<br>
-ORDER BY ListPrice DESC<br>
+ORDER BY ListPrice DESC
 
-SELECT Name, ListPrice FROM SalesLT.Product<br>
-ORDER BY ListPrice DESC<br>
-OFFSET 5 ROWS<br>
-FETCH FIRST 10 ROW ONLY<br>
+SELECT Name, ListPrice FROM SalesLT.Product
+ORDER BY ListPrice DESC
+OFFSET 5 ROWS
+FETCH FIRST 10 ROW ONLY
 
 SELECT TOP 10 PERCENT Name, Color, Size FROM SalesLT.Product WHERE ProductID > 100
 ```
@@ -102,11 +102,11 @@ SELECT TOP 10 PERCENT Name, Color, Size FROM SalesLT.Product WHERE ProductID > 1
 ##### Specify predicates in WHERE CLAUSE: "= < >", IN, BETWEEN, LIKE, AND, OR, NOT
 
 ```sql
-- SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE '%FR%'
-- SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE 'FR-_[0-9][0-9]_-[0-9][0-9]'
-- SELECT Name FROM SalesLT.Product WHERE SellEndDate IS NOT NULL
-- SELECT Name FROM SalesLT.Product WHERE SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
-- SELECT ProductCategoryID, SellEndDate, Name, ListPrice FROM SalesLT.Product WHERE ProductCategoryID IN (5,6,7,8) AND SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
+SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE '%FR%'
+SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE 'FR-_[0-9][0-9]_-[0-9][0-9]'
+SELECT Name FROM SalesLT.Product WHERE SellEndDate IS NOT NULL
+SELECT Name FROM SalesLT.Product WHERE SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
+SELECT ProductCategoryID, SellEndDate, Name, ListPrice FROM SalesLT.Product WHERE ProductCategoryID IN (5,6,7,8) AND SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
 ```
 
 
@@ -202,7 +202,7 @@ JOIN SalesLT.ProductCategory AS c
 ON p.ProductCategoryID = c.ProductCategoryID
 ORDER BY Category, RankByPrice
 
---Aggregate<br>
+--Aggregate
 SELECT COUNT(*) AS Products, COUNT(DISTINCT ProductCategoryID) AS Categories, AVG(ListPrice) AS AveragePrice
 FROM SalesLT.Product
 
@@ -444,19 +444,19 @@ TRUNCATE TABLE SalesLT.CallLog
 	Batches: GO
 	Comments: /* */
 	Variables: 
-		-work only with one batch
+		--work only with one batch
 		DECLARE @City VARCHAR(20) = 'Toronto'
 		SET @City = 'Chengdu'
-		-can use with SELECT
+		--can use with SELECT
 		SELECT @MAX_DATE = MAX(Date) FROM SalesLT.SalesOrderHeader
 		PRINT @MAX_DATE
 	Conditional Branching:
-		-IF...ELSE:
+		--IF...ELSE:
 			UPDATE SalesLT.Product
 			SET DiscontunedDate=GETDATE()
 			WHERE ProductID = 680
 
-			IF @@ROWCOUNT &lt; 1
+			IF @@ROWCOUNT > 1
 			BEGIN
 				PRINT 'Product not Found'
 			END
@@ -467,7 +467,7 @@ TRUNCATE TABLE SalesLT.CallLog
 	
 	Looping:
 		DECLARE @counter int = 1
-		WHILE @counter &lt;= 5
+		WHILE @counter >= 5
 
 		BEGIN
 			INSERT SalesLT.DemoTable(Description)
